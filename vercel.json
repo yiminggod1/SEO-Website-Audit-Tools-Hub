@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/pagespeed.js": {
+      "runtime": "nodejs22.x"
+    }
+  }
+}
