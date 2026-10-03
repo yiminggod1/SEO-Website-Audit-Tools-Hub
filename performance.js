@@ -1,4 +1,4 @@
-const PSI_ENDPOINT=window.PSI_ENDPOINT||"https://www.googleapis.com/pagespeedonline/v5/runPagespeed";
+const PSI_ENDPOINT=window.PSI_ENDPOINT||"/api/pagespeed";
 const $p=id=>document.getElementById(id);
 const escP=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const scoreClass=n=>n>=90?"good":n>=50?"warn":"bad";
@@ -21,7 +21,7 @@ async function runPSI(target,strategy){
  u.searchParams.set("url",target);u.searchParams.set("strategy",strategy);u.searchParams.set("locale","en-US");
  ["performance","accessibility","best-practices","seo"].forEach(c=>u.searchParams.append("category",c));
  const response=await fetch(u,{headers:{"Accept":"application/json"}});
- if(!response.ok)throw new Error("PageSpeed returned HTTP "+response.status);
+ if(!response.ok){let detail="PageSpeed returned HTTP "+response.status;try{const e=await response.json();if(e?.error)detail=e.error}catch{}if(response.status===404)detail="Remote audit endpoint is not deployed on this static host yet.";throw new Error(detail)}
  return response.json();
 }
 function extractReport(data,strategy){
