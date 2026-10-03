@@ -78,13 +78,12 @@ if($("securityBtn"))$("securityBtn").onclick=()=>{
   const checks=names.map(x=>[x[0],h.includes(x[1])?"Present":"Not found",h.includes(x[1])]);
   setHTML("securityOut",checks.map(row).join("")+"<small>Paste actual response headers for a meaningful check; browser HTML alone cannot expose every server response header.</small>");
 };
-const bindPreview=(ids,out)=>{ids.forEach(id=>$(id)?.addEventListener("input",()=>{}));};
 const refreshSocial=()=>{
   setText("ogOutTitle",$("ogTitle")?.value||"Your page title");setText("ogOutDesc",$("ogDesc")?.value||"A useful description for social sharing.");
   try{const u=new URL($("ogUrl")?.value||"https://example.com/page");setText("ogOutUrl",u.host+u.pathname)}catch{setText("ogOutUrl",$("ogUrl")?.value||"example.com/page")};
-  setText("twOutTitle",$("twTitle")?.value||"Your page title");setText("twOutDesc",$("twDesc")?.value||"A useful description for social sharing.");
+  
 };
-["ogTitle","ogDesc","ogUrl","ogImage","twTitle","twDesc","twImage"].forEach(id=>$(id)?.addEventListener("input",refreshSocial));
+["ogTitle","ogDesc","ogUrl","ogImage"].forEach(id=>$(id)?.addEventListener("input",refreshSocial));
 
 if($("geoBtn"))$("geoBtn").onclick=()=>{
   const d=parse($("geoInput")?.value||""),text=d.body?.textContent||"",checks=[
@@ -108,7 +107,6 @@ if($("serpDesc"))$("serpDesc").oninput=e=>{setText("serpOutDesc",e.target.value|
 if($("schemaBtn"))$("schemaBtn").onclick=()=>setText("schemaOut",JSON.stringify({"@context":"https://schema.org","@type":"Article","headline":$("schemaHeadline")?.value||"","author":{"@type":"Person","name":$("schemaAuthor")?.value||""},"url":$("schemaUrl")?.value||""},null,2));
 if($("robotBtn"))$("robotBtn").onclick=()=>setText("robotOut","User-agent: "+$("robotAgent")?.value+"\nDisallow: "+$("robotDisallow")?.value+"\n\nSitemap: "+$("robotSitemap")?.value);
 if($("sitemapBtn"))$("sitemapBtn").onclick=()=>{const u=($("sitemapInput")?.value||"").split(/\n+/).map(x=>x.trim()).filter(Boolean);setText("sitemapOut",'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+u.map(x=>"  <url><loc>"+esc(x)+"</loc></url>").join("\n")+"\n</urlset>")};
-if($("utmBtn"))$("utmBtn").onclick=()=>{try{const u=new URL($("utmUrl")?.value);[["utm_source","utmSource"],["utm_medium","utmMedium"],["utm_campaign","utmCampaign"]].forEach(x=>u.searchParams.set(x[0],$(x[1])?.value||""));setText("utmOut",u.toString())}catch{setText("utmOut","Enter a valid URL.")}};
 
 const saved=sessionStorage.getItem("seoAuditUrl");if(saved&&$("htmlInput")){const hint=document.createElement("div");hint.className="tool-note";hint.textContent="Starting URL saved from the home page: "+saved+" · paste the returned page HTML below for browser-side analysis.";$("htmlInput").before(hint);sessionStorage.removeItem("seoAuditUrl")}
-refreshSocial();$("schemaBtn")?.click();$("utmBtn")?.click();
+refreshSocial();$("schemaBtn")?.click();
