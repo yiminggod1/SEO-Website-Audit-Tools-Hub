@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Free SEO and website audit tools for technical SEO, metadata, structured data, links, indexing, performance and AI search visibility.">
+<title>SEO Website Audit Tools Hub — Free SEO Tools</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header"><div class="wrap nav">
+<a class="brand" href="#"><span class="brand-mark">S</span><span>SEO Audit Hub</span></a>
+<nav><a href="#tools">Tools</a><a href="#audit">Audit</a><a href="#guides">Guides</a></nav>
+<a class="nav-cta" href="#audit">Run a free audit</a>
+</div></header>
+<main>
+<section class="hero wrap">
+<div class="eyebrow">WEBSITE QUALITY • SEO • SEARCH VISIBILITY</div>
+<h1>See what is holding<br><em>your website back.</em></h1>
+<p class="hero-copy">A practical toolkit for technical SEO, metadata, structured data, links and modern search visibility. Start with a free audit or use a focused checker.</p>
+<div class="audit-box" id="audit">
+<div class="audit-label">Website audit</div>
+<div class="input-row"><input id="auditUrl" type="url" placeholder="https://example.com" aria-label="Website URL"><button id="auditBtn">Analyze website <span>→</span></button></div>
+<p class="hint">No account required. For a deeper crawl, use the focused tools below.</p>
+</div>
+<div class="trust-row"><span>✓ Free to use</span><span>✓ No sign-up</span><span>✓ Privacy-first tools</span></div>
+</section>
+<section class="metrics wrap"><div><strong>30+</strong><span>Focused tools</span></div><div><strong>6</strong><span>SEO categories</span></div><div><strong>0</strong><span>Required accounts</span></div><div><strong>100%</strong><span>Actionable reports</span></div></section>
+<section class="section wrap" id="tools">
+<div class="section-head"><div><span class="eyebrow">TOOLKIT</span><h2>Fix the issue, not just the score.</h2></div><p>Each tool targets one specific search intent so you can diagnose a problem quickly.</p></div>
+<div class="tool-grid">
+<a class="tool-card featured" href="#audit"><span class="icon">◎</span><div><h3>Website SEO Audit</h3><p>Start with a structured health check and prioritized fixes.</p><small>Audit</small></div></a>
+<a class="tool-card" href="#meta"><span class="icon">Aa</span><div><h3>Meta Tag Analyzer</h3><p>Inspect titles, descriptions, canonical and robots directives.</p><small>On-page SEO</small></div></a>
+<a class="tool-card" href="#serp"><span class="icon">▤</span><div><h3>SERP Preview</h3><p>Preview how a page title and description may appear in search.</p><small>On-page SEO</small></div></a>
+<a class="tool-card" href="#schema"><span class="icon">{ }</span><div><h3>Schema Generator</h3><p>Create clean JSON-LD for common page types.</p><small>Structured data</small></div></a>
+<a class="tool-card" href="#robots"><span class="icon">⌁</span><div><h3>Robots.txt Generator</h3><p>Build crawler rules without memorizing syntax.</p><small>Crawling</small></div></a>
+<a class="tool-card" href="#sitemap"><span class="icon">⌗</span><div><h3>Sitemap Generator</h3><p>Create a sitemap from a list of canonical URLs.</p><small>Indexing</small></div></a>
+<a class="tool-card" href="#utm"><span class="icon">↗</span><div><h3>UTM Builder</h3><p>Create consistent campaign URLs for analytics.</p><small>Marketing</small></div></a>
+<a class="tool-card" href="#headers"><span class="icon">▥</span><div><h3>Security Headers Guide</h3><p>Review the headers that commonly affect website security.</p><small>Security</small></div></a>
+<a class="tool-card" href="#links"><span class="icon">∞</span><div><h3>Internal Link Planner</h3><p>Plan contextual links between related pages.</p><small>Site architecture</small></div></a>
+<a class="tool-card" href="#readability"><span class="icon">T</span><div><h3>Readability Checker</h3><p>Estimate reading difficulty and improve page copy.</p><small>Content</small></div></a>
+</div>
+</section>
+<section class="workspace wrap">
+<div class="panel" id="meta"><div class="panel-top"><div><span class="eyebrow">TOOL 01</span><h2>Meta Tag Analyzer</h2></div><span class="pill">Browser-based</span></div><textarea id="htmlInput" placeholder="Paste your page HTML here…"></textarea><button class="secondary" id="analyzeHtml">Analyze HTML</button><div id="metaResult" class="result hidden"></div></div>
+<div class="panel" id="serp"><div class="panel-top"><div><span class="eyebrow">TOOL 02</span><h2>SERP Preview</h2></div></div><label>Page title<input id="serpTitle" maxlength="60" value="Your page title — Brand"></label><label>Meta description<textarea id="serpDesc" maxlength="160">A concise description that explains what this page offers and gives searchers a reason to click.</textarea></label><div class="serp-card"><div class="serp-url">example.com › page</div><div class="serp-title" id="serpOutTitle">Your page title — Brand</div><p id="serpOutDesc">A concise description that explains what this page offers and gives searchers a reason to click.</p></div></div>
+</section>
+<section class="workspace wrap">
+<div class="panel" id="schema"><div class="panel-top"><div><span class="eyebrow">TOOL 03</span><h2>Article Schema Generator</h2></div></div><div class="two"><label>Headline<input id="schemaHeadline" value="How to Improve Your Website SEO"></label><label>Author<input id="schemaAuthor" value="Your Name"></label></div><label>URL<input id="schemaUrl" value="https://example.com/article"></label><button class="secondary" id="schemaBtn">Generate JSON-LD</button><pre id="schemaOut" class="codebox"></pre></div>
+<div class="panel" id="utm"><div class="panel-top"><div><span class="eyebrow">TOOL 04</span><h2>UTM Builder</h2></div></div><label>Destination URL<input id="utmUrl" value="https://example.com/"></label><div class="two"><label>Source<input id="utmSource" value="newsletter"></label><label>Medium<input id="utmMedium" value="email"></label></div><label>Campaign<input id="utmCampaign" value="spring-launch"></label><button class="secondary" id="utmBtn">Build campaign URL</button><div id="utmOut" class="output"></div></div>
+</section>
+<section class="section guides wrap" id="guides">
+<div class="section-head"><div><span class="eyebrow">LEARN</span><h2>Practical SEO guidance.</h2></div><p>Tool pages will be expanded with original explanations, examples, FAQs and troubleshooting so the site is useful beyond a single button.</p></div>
+<div class="guide-grid"><article><span>01</span><h3>Technical SEO checklist</h3><p>What to inspect before worrying about rankings: crawlability, indexability, canonicals and site architecture.</p></article><article><span>02</span><h3>Metadata that earns clicks</h3><p>How to write titles and descriptions that are specific, useful and aligned with the page.</p></article><article><span>03</span><h3>Structured data basics</h3><p>Understand JSON-LD, eligibility, common schema types and validation.</p></article></div>
+</section>
+<section class="cta wrap"><div><span class="eyebrow">NEXT STEP</span><h2>Find the highest-impact fixes first.</h2><p>Use the audit as your starting point, then open a focused tool for each issue.</p></div><a class="nav-cta" href="#audit">Start auditing →</a></section>
+</main>
+<footer><div class="wrap footer"><span>© 2026 SEO Audit Hub</span><div><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a></div></div></footer>
+<script src="app.js"></script>
+</body></html>
