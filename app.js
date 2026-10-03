@@ -37,7 +37,7 @@ const showAudit=h=>{
   setHTML("auditResult",'<div class="score-head"><div><span class="eyebrow">PAGE HEALTH</span><strong>'+p+"%</strong></div><span>"+passed+" / "+r.checks.length+" passed</span></div>"+r.checks.map(row).join(""));
 };
 
-if($("auditBtn"))$("auditBtn").onclick=()=>{const u=$("auditUrl")?.value.trim();sessionStorage.setItem("seoAuditUrl",u||"");location.href="tools.html#audit"};
+if($("auditBtn"))$("auditBtn").onclick=()=>{const u=$("auditUrl")?.value.trim();sessionStorage.setItem("pendingAuditUrl",u||"");location.href="tools.html#remote-audit"};
 if($("analyzeHtml"))$("analyzeHtml").onclick=()=>showAudit($("htmlInput")?.value.trim());
 if($("metaBtn"))$("metaBtn").onclick=()=>{
   const d=parse($("metaInput")?.value||""),rows=[
