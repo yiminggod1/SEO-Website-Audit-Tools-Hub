@@ -5,6 +5,7 @@ import { execFileSync } from "node:child_process";
 const root=process.cwd();
 const files=fs.readdirSync(root);
 const htmlFiles=files.filter(f=>f.endsWith(".html")&&f!=="404.html");
+const htmlContent=new Map(htmlFiles.map(file=>[file,fs.readFileSync(path.join(root,file),"utf8")]));
 const issues=[];
 
 for(const file of htmlFiles){
@@ -27,9 +28,16 @@ for(const file of htmlFiles){
   const hrefs=[...html.matchAll(/(?:href|src)=["']([^"']+)["']/gi)].map(m=>m[1]).filter(Boolean);
   for(const href of hrefs){
     if(/^(https?:|mailto:|tel:|javascript:|data:|#)/i.test(href)) continue;
-    const target=href.split("#")[0].split("?")[0].replace(/^\.\/+/, "");
-    if(!target) continue;
-    if(!files.includes(target)) issues.push(`${file}: broken local link -> ${href}`);
+    const parts=href.split("#"),target=parts[0].split("?")[0].replace(/^\.\/+/, ""),fragment=parts[1]||"";
+    if(!target){
+      if(fragment && !anchors.has(fragment)) issues.push(`${file}: broken anchor #${fragment}`);
+      continue;
+    }
+    if(!files.includes(target)) { issues.push(`${file}: broken local link -> ${href}`); continue; }
+    if(fragment){
+      const targetHtml=htmlContent.get(target)||"",targetIds=new Set([...targetHtml.matchAll(/\bid=["']([^"']+)["']/gi)].map(m=>m[1]));
+      if(!targetIds.has(fragment)) issues.push(`${file}: broken cross-page anchor -> ${href}`);
+    }
   }
 
   const ads=(html.match(/class=["'][^"']*ad-slot[^"']*["']/gi)||[]).length;
