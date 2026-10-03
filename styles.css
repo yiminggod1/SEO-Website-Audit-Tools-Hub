@@ -19,7 +19,6 @@
 .social-card strong{display:block;font-size:17px;margin-bottom:6px;line-height:1.2}
 .social-card p{margin:0 0 9px;color:var(--muted);font-size:13px}
 .social-card small{color:var(--accent);font-weight:750}
-.twitter-card{background:#151a18;color:#f5f5ef;border-color:#27322e}
 .twitter-card p,.twitter-card span{color:#b9c3bf}
 .empty-page{padding:120px 0}
 .empty-page .nav-cta{display:inline-block;margin-top:10px}
@@ -331,13 +330,13 @@
 
 /* Anchor targets stay visible beneath the fixed header + jump bar. */
 .workbench-page #audit,.workbench-page #serp,.workbench-page #meta,.workbench-page #schema,
-.workbench-page #utm,.workbench-page #robots,.workbench-page #sitemap,
+.workbench-page #robots,.workbench-page #sitemap,
 .workbench-page #content-tools,.workbench-page #advanced,.workbench-page #remote-audit,
 .workbench-page #headings,.workbench-page #images,.workbench-page #links,
 .workbench-page #canonical,.workbench-page #keywords,.workbench-page #readability,
 .workbench-page #redirect,.workbench-page #broken,.workbench-page #indexability,
 .workbench-page #mobile,.workbench-page #security,.workbench-page #og,
-.workbench-page #twitter,.workbench-page #geo,.workbench-page #llm{
+.workbench-page #geo,.workbench-page #llm{
   scroll-margin-top:126px;
 }
 .remote-result{scroll-margin-top:126px}
