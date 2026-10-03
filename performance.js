@@ -1,4 +1,4 @@
-const PSI_ENDPOINT="https://www.googleapis.com/pagespeedonline/v5/runPagespeed";
+const PSI_ENDPOINT=window.PSI_ENDPOINT||"https://www.googleapis.com/pagespeedonline/v5/runPagespeed";
 const $p=id=>document.getElementById(id);
 const escP=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const scoreClass=n=>n>=90?"good":n>=50?"warn":"bad";
