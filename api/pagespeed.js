@@ -1,4 +1,4 @@
-export default async function handler(req,res){
+module.exports = async function handler(req,res){
   if(req.method!=="GET"){res.status(405).json({error:"Method not allowed"});return}
   const target=String(req.query?.url||"").trim(),strategy=String(req.query?.strategy||"mobile");
   if(!/^https?:\/\//i.test(target)){res.status(400).json({error:"A valid public URL is required."});return}
