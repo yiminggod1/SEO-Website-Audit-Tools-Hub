@@ -37,6 +37,7 @@ function show(id,html){const el=$(id);if(!el)return;el.classList.remove("hidden"
 function setText(id,value){const el=$(id);if(el)el.textContent=value;}
 
 if($("auditBtn"))$("auditBtn").onclick=()=>{$("audit")?.scrollIntoView({behavior:"smooth",block:"center"});$("htmlInput")?.focus()};
+if($("metaBtn"))$("metaBtn").onclick=()=>{const h=htmlValue("metaInput");if(!h){show("metaResult","<b>Paste HTML first.</b>");return}const d=parse(h),checks=[["Title",d.title?.trim()||"Missing",!!d.title?.trim()],["Description",d.querySelector('meta[name="description"]')?.content?.trim()||"Missing",!!d.querySelector('meta[name="description"]')?.content?.trim()],["Canonical",d.querySelector('link[rel="canonical"]')?.getAttribute("href")||"Missing",!!d.querySelector('link[rel="canonical"]')],["Robots",d.querySelector('meta[name="robots"]')?.content||"Not set",!d.querySelector('meta[name="robots"]')?.content?.includes("noindex")]];show("metaResult",checks.map(row).join(""));};
 if($("analyzeHtml"))$("analyzeHtml").onclick=()=>{
   const h=htmlValue("htmlInput");
   if(!h){show("auditResult","<b>Paste HTML first.</b>");return}
