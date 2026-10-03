@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow:
+
+Sitemap: https://yiminggod1.github.io/SEO-Website-Audit-Tools-Hub/sitemap.xml
