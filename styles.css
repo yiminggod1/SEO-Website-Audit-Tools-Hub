@@ -277,3 +277,27 @@
  .side-note{position:static}
  .article-body .lede{font-size:20px}
 }
+
+.workbench-jump{
+  position:sticky;top:72px;z-index:8;
+  display:flex;gap:6px;overflow-x:auto;
+  padding:8px 0 10px;margin-bottom:14px;
+  background:rgba(18,26,23,.88);
+  backdrop-filter:blur(10px);
+  scrollbar-width:none;
+}
+.workbench-jump::-webkit-scrollbar{display:none}
+.workbench-jump a{
+  flex:0 0 auto;text-decoration:none;
+  color:#9eaaa4;border:1px solid #33423c;border-radius:3px;
+  padding:7px 10px;font-size:9px;font-weight:850;
+  letter-spacing:.08em;text-transform:uppercase;
+}
+.workbench-jump a:hover,.workbench-jump a:focus-visible{color:#eff3ef;border-color:#698177;background:#1b2924}
+.workbench-jump b{color:#d77a3e;margin-right:5px}
+.home-page a:focus-visible,.home-page button:focus-visible,.workbench-page a:focus-visible,.workbench-page button:focus-visible{
+  outline:2px solid #d77a3e;outline-offset:3px
+}
+.home-page input:focus,.home-page textarea:focus,.workbench-page input:focus,.workbench-page textarea:focus{
+  outline:2px solid rgba(215,122,62,.45);outline-offset:1px;border-color:#a9b9b1
+}
