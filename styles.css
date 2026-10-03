@@ -328,3 +328,16 @@
   .home-page .hero{padding-right:0;min-height:0}
   .audit-specimen{display:none}
 }
+
+/* Anchor targets stay visible beneath the fixed header + jump bar. */
+.workbench-page #audit,.workbench-page #serp,.workbench-page #meta,.workbench-page #schema,
+.workbench-page #utm,.workbench-page #robots,.workbench-page #sitemap,
+.workbench-page #content-tools,.workbench-page #advanced,.workbench-page #remote-audit,
+.workbench-page #headings,.workbench-page #images,.workbench-page #links,
+.workbench-page #canonical,.workbench-page #keywords,.workbench-page #readability,
+.workbench-page #redirect,.workbench-page #broken,.workbench-page #indexability,
+.workbench-page #mobile,.workbench-page #security,.workbench-page #og,
+.workbench-page #twitter,.workbench-page #geo,.workbench-page #llm{
+  scroll-margin-top:126px;
+}
+.remote-result{scroll-margin-top:126px}
