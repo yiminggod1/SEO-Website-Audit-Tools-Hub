@@ -225,3 +225,55 @@
 }
 
 .text-link{display:inline-block;margin-left:12px;color:var(--accent);font-weight:800;font-size:12px;text-decoration:none;border-bottom:1px solid currentColor}.text-link:hover{opacity:.72}
+
+/* Editorial field-guide system — intentionally different from the audit dashboard */
+.guide-hub-page,.guide-page{background:#eee9df;color:#1c2521}
+.guide-cover{display:grid;grid-template-columns:1fr 300px;gap:55px;align-items:end;padding:86px 0 65px}
+.guide-cover h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(46px,7vw,82px);letter-spacing:-.055em}
+.guide-cover h1 em{font-style:italic}
+.guide-cover>div>p{max-width:700px;font-size:17px;color:#67716c;margin:26px 0 0}
+.guide-cover aside{border:1px solid #b9b5a9;border-top:5px solid #1c2521;padding:20px;background:#f8f3e9;box-shadow:10px 10px 0 rgba(28,37,33,.06)}
+.guide-cover aside span,.guide-cover aside small{display:block;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#7d847e;font-weight:900}
+.guide-cover aside strong{display:block;font-family:Georgia,serif;font-size:22px;margin:24px 0 8px}
+.guide-index{display:grid;grid-template-columns:1.15fr .85fr .85fr;gap:12px}
+.guide-index-lead{grid-row:span 2;padding:29px 22px 22px;border-top:5px solid #1c2521;background:#f8f3e9}
+.guide-index-lead h2{font-family:Georgia,serif;font-size:36px;font-weight:400;line-height:1.05;margin:15px 0}
+.guide-index-lead p{color:#6c756f;font-size:13px;max-width:430px}
+.guide-feature{display:flex;flex-direction:column;justify-content:space-between;min-height:220px;padding:21px;text-decoration:none;color:#1c2521;background:#f8f3e9;border:1px solid #d3cfc2;transition:.2s}
+.guide-feature:hover{transform:translateY(-4px);box-shadow:9px 9px 0 rgba(28,37,33,.07);border-color:#a8a399}
+.guide-feature span{font-size:9px;letter-spacing:.14em;font-weight:900;color:#a05d32}
+.guide-feature h3{font-family:Georgia,serif;font-size:23px;line-height:1.05;font-weight:400;margin:26px 0 8px}
+.guide-feature p{font-size:12px;color:#737b75;margin:0}
+.guide-feature b{font-size:10px;letter-spacing:.08em;margin-top:22px;color:#1e6b57}
+.editorial-note{background:#dbe3dc;border:1px solid #c5d0c8;border-radius:0;box-shadow:9px 9px 0 rgba(28,37,33,.05)}
+.article-hero{max-width:920px;padding:85px 0 45px}
+.article-hero h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(45px,7vw,80px);max-width:900px}
+.article-hero h1 em{font-style:italic}
+.article-hero>p{max-width:720px;font-size:18px;color:#646e68;margin:25px 0}
+.article-meta{display:flex;gap:18px;padding-top:18px;border-top:1px solid #bdb9ad;color:#7f867f;font-size:9px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+.article-body{display:grid;grid-template-columns:minmax(0,760px) 270px;gap:45px;align-items:start}
+.article-body article{background:#f8f3e9;border:1px solid #d3cfc2;padding:38px 42px}
+.article-body .lede{font-family:Georgia,serif;font-size:24px;line-height:1.5;margin:0 0 38px;color:#2b342f}
+.article-body section{border-top:1px solid #d8d2c4;padding:27px 0}
+.article-body section:last-child{padding-bottom:4px}
+.article-index{display:inline-block;font-size:9px;font-weight:900;letter-spacing:.15em;color:#a05d32;margin-bottom:9px}
+.article-body h2{font-family:Georgia,serif;font-size:30px;line-height:1.08;font-weight:400;margin:0 0 8px}
+.article-body section p{font-size:14px;color:#5e6862;line-height:1.8;margin:0}
+.side-note{background:#1c2521;color:#eef0eb;padding:20px;position:sticky;top:96px;margin-bottom:12px}
+.side-note span{font-size:8px;letter-spacing:.16em;font-weight:900;color:#a5d1c2}
+.side-note strong{display:block;font-family:Georgia,serif;font-size:21px;font-weight:400;line-height:1.1;margin:20px 0 8px}
+.side-note p{color:#aab5af;font-size:11px;line-height:1.7}
+.side-note a{display:inline-block;margin-top:8px;color:#fff;text-decoration:none;border-bottom:1px solid #88bca8;font-size:11px;font-weight:800}
+.secondary-note{position:static;background:#dce4dd;color:#26312b}
+.secondary-note span{color:#9a5c36}.secondary-note p{color:#657069}
+@media(max-width:800px){
+ .guide-cover{grid-template-columns:1fr;gap:24px;padding-top:58px}
+ .guide-cover aside{max-width:330px}
+ .guide-index{grid-template-columns:1fr}
+ .guide-index-lead{grid-row:auto}
+ .article-hero{padding-top:58px}
+ .article-body{grid-template-columns:1fr;gap:16px}
+ .article-body article{padding:25px}
+ .side-note{position:static}
+ .article-body .lede{font-size:20px}
+}
