@@ -19,7 +19,6 @@
 .social-card strong{display:block;font-size:17px;margin-bottom:6px;line-height:1.2}
 .social-card p{margin:0 0 9px;color:var(--muted);font-size:13px}
 .social-card small{color:var(--accent);font-weight:750}
-.twitter-card p,.twitter-card span{color:#b9c3bf}
 .empty-page{padding:120px 0}
 .empty-page .nav-cta{display:inline-block;margin-top:10px}
 .ad-slot + .section{padding-top:16px}
