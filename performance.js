@@ -44,11 +44,11 @@ function extractReport(data,strategy){
 function renderReport(reports){
  const out=$p("remoteResult"); if(!out)return;
  const all=reports.flatMap(r=>r.metrics),cwv=all.filter(x=>["LCP","INP","CLS"].includes(x.name));
- const hero=Math.round(reports.reduce((s,r)=>s+(r.scores.Performance+r.scores.SEO)/2,0)/Math.max(1,reports.length));
+ const hero=reports.length+" fresh runs";
  out.classList.remove("hidden");
  out.innerHTML='<div class="console-head"><div><span class="eyebrow">REMOTE AUDIT</span><h2>Live Lighthouse evidence</h2></div><span class="live-badge">FRESH RUN</span></div>'+
- '<div class="remote-summary"><div class="big-score"><small>Performance + SEO</small><strong>'+hero+'</strong><span>combined view</span></div><div class="score-grid">'+reports.flatMap(r=>Object.entries(r.scores).map(([k,v])=>metric(k,v+"/100",r.strategy,scoreClass(v)))).join("")+'</div></div>'+
- '<div class="cw-grid">'+cwv.map(x=>metric(x.name,x.name==="CLS"?Number(x.value).toFixed(2):(x.value/1000).toFixed(x.name==="LCP"?1:0)+"s",x.display,metricState(x.name,x.value))).join("")+'</div>'+
+ '<div class="remote-summary"><div class="big-score"><small>REMOTE EVIDENCE</small><strong>'+hero+'</strong><span>mobile + desktop</span></div><div class="score-grid">'+reports.flatMap(r=>Object.entries(r.scores).map(([k,v])=>metric(k,v+"/100",r.strategy,scoreClass(v)))).join("")+'</div></div>'+
+ '<div class="cw-grid">'+cwv.map(x=>metric(x.name,x.name==="CLS"?Number(x.value).toFixed(2):x.name==="LCP"?(x.value/1000).toFixed(1)+"s":Math.round(x.value)+"ms",x.display,metricState(x.name,x.value))).join("")+'</div>'+
  '<div class="report-columns"><div><span class="eyebrow">TOP OPPORTUNITIES</span><div class="finding-list">'+reports.flatMap(r=>r.opportunities.slice(0,3).map(a=>'<article><span>'+escP(r.strategy)+'</span><strong>'+escP(a.title)+'</strong><small>'+escP(a.displayValue||"Review Lighthouse details")+'</small></article>')).join("")+'</div></div><div class="evidence-note"><span class="eyebrow">HOW TO READ THIS</span><p>These are lab measurements from a fresh Lighthouse run. Core Web Vitals used by Google Search are evaluated from real-world field data when available; a Lighthouse run is useful for diagnosis but is not the same thing as field experience.</p></div></div>';
 }
 async function startRemoteAudit(){
