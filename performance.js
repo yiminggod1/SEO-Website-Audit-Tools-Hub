@@ -20,7 +20,11 @@ async function runPSI(target,strategy){
  const u=new URL(PSI_ENDPOINT);
  u.searchParams.set("url",target);u.searchParams.set("strategy",strategy);u.searchParams.set("locale","en-US");
  ["performance","accessibility","best-practices","seo"].forEach(c=>u.searchParams.append("category",c));
- const response=await fetch(u,{headers:{"Accept":"application/json"}});
+ const controller=new AbortController();
+ const timer=setTimeout(()=>controller.abort(),30000);
+ let response;
+ try{response=await fetch(u,{headers:{"Accept":"application/json"},signal:controller.signal})}
+ finally{clearTimeout(timer)}
  if(!response.ok){let detail="PageSpeed returned HTTP "+response.status;try{const e=await response.json();if(e?.error?.message)detail=e.error.message;else if(e?.error)detail=String(e.error)}catch{}throw new Error(detail)}
  return response.json();
 }
@@ -58,13 +62,21 @@ async function startRemoteAudit(){
  button?.setAttribute("disabled","disabled");if(status)status.textContent="Running mobile + desktop Lighthouse audits…";
  out?.classList.remove("hidden");if(out)out.innerHTML='<div class="loading-console"><span class="pulse-dot"></span> Fetching fresh evidence from Google PageSpeed Insights…</div>';
  try{
-  const reports=await Promise.all(["mobile","desktop"].map(async strategy=>extractReport(await runPSI(target,strategy),strategy)));
+  const reports=[];
+  for(const strategy of ["mobile","desktop"]){
+    if(status)status.textContent="Running "+strategy+" Lighthouse audit…";
+    reports.push(extractReport(await runPSI(target,strategy),strategy));
+  }
   sessionStorage.setItem("lastPSIUrl",target);renderReport(reports);
   if(status)status.textContent="Audit complete · "+new Date().toLocaleTimeString();
  }catch(err){
-  if(out)out.innerHTML='<div class="error-console"><strong>Remote audit could not be completed.</strong><p>'+escP(err.message||"Unknown error")+'</p><small>The public PageSpeed endpoint can be rate-limited. Try again later or configure a dedicated API endpoint/serverless proxy for production.</small></div>';
+  const title=err?.name==="AbortError"?"Audit timed out after 30 seconds.":"Remote audit could not be completed.";
+  const detail=err?.message||"Unknown error";
+  if(out)out.innerHTML='<div class="error-console"><strong>'+escP(title)+'</strong><p>'+escP(detail)+'</p><small>PageSpeed may enforce quota or transient limits. A production serverless proxy is included for higher-volume use.</small><br><a class="text-link" target="_blank" rel="noopener" href="https://pagespeed.web.dev/">Open Google PageSpeed Insights ↗</a></div>';
   if(status)status.textContent="Audit failed";
  }finally{button?.removeAttribute("disabled")}
 }
 if($p("remoteBtn"))$p("remoteBtn").onclick=startRemoteAudit;
-const savedPSI=sessionStorage.getItem("lastPSIUrl");if(savedPSI&&$p("remoteUrl"))$p("remoteUrl").value=savedPSI;
+const savedPSI=sessionStorage.getItem("lastPSIUrl"),pending=sessionStorage.getItem("pendingAuditUrl");
+if($p("remoteUrl"))$p("remoteUrl").value=pending||savedPSI||"";
+if(pending)sessionStorage.removeItem("pendingAuditUrl");
